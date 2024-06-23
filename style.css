@@ -1,0 +1,80 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  height: 100vh;
+  background: #16242b;
+  justify-items: center;
+}
+
+main {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  align-content: center;
+}
+
+.list {
+  display: flex;
+  justify-items: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  transform-style: preserve-3d;
+  transform: perspective(1000px);
+}
+
+.item {
+  padding: 0 0.5rem;
+  display: flex;
+  height: 100%;
+}
+
+.list .item {
+  transition: 0.5s;
+  filter: brightness(0);
+}
+
+.list .item:hover {
+  filter: brightness(1);
+  transform: translateZ(200px);
+}
+.list .item:hover + * {
+  filter: brightness(0.6);
+  transform: translateZ(150px) rotateY(40deg);
+}
+
+.list .item:hover + * + * {
+  filter: brightness(0.4);
+  transform: translateZ(70px) rotateY(20deg);
+}
+
+.list .item:hover + * + * + * {
+  filter: brightness(0.2);
+  transform: translateZ(30px) rotateY(10deg);
+}
+.list .item:has(+ *:hover) {
+  filter: brightness(0.6);
+  transform: translateZ(150px) rotateY(-40deg);
+}
+
+.list .item:has(+ * + * :hover) {
+  filter: brightness(0.4);
+  transform: translateZ(70px) rotateY(-20deg);
+}
+
+.list .item:has(+ * + * + *:hover) {
+  filter: brightness(0.2);
+  transform: translateZ(30px) rotateY(-10deg);
+}
+
+.item > img {
+  width: 100px;
+  object-fit: cover;
+  aspect-ratio: 9 / 16;
+  object-position: center;
+}
